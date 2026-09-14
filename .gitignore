@@ -216,3 +216,9 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+
+# Project data and model weights (share via drive folder instead)
+data/*
+!data/.gitkeep
+models/*
+!models/.gitkeep

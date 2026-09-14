@@ -23,16 +23,7 @@ source venv/bin/activate   # on Windows: venv\Scripts\activate
 pip install -r requirements.txt
 ```
 
-If `requirements.txt` doesn't exist yet, the core packages to start with are:
-
-```
-ultralytics
-opencv-python
-torch
-numpy
-```
-
-Run `pip freeze > requirements.txt` once your environment is working so everyone else can install the exact same setup.
+Core packages: `ultralytics`, `opencv-python`, `torch`, `numpy`. If you add a new dependency, run `pip freeze > requirements.txt` afterward so everyone else can install the exact same setup.
 
 ## Project structure
 
@@ -55,7 +46,7 @@ BSRA-CV/
 
 ## Meeting schedule
 
-Weekly, [day/time to be finalized].
+Weekly, Sundays 6–7 PM (subject to change).
 
 ## Reference
 

@@ -121,8 +121,9 @@ By the end of the semester, the team should ideally have:
 ## Team norms
 
 * Work off feature branches, open a pull request before merging into `main`.
-* Keep large files (datasets, model weights) out of git. Use the `.gitignore` for that, and share large files through a drive folder instead.
+* Keep large files (datasets, model weights) out of git. Use the `.gitignore` for that, and share large files through the [team drive folder](https://drive.google.com/drive/folders/1qa2ktrauYvNnrdFLqBTY9tBebvrS4sXG) instead.
 * Post questions and blockers in the group chat between meetings rather than sitting stuck.
+* Track physical equipment needs and purchase status in [EQUIPMENT.md](EQUIPMENT.md).
 
 ### Branching
 

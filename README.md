@@ -22,8 +22,9 @@ together and where each subteam's code plugs in.
 
 ## Subteams
 
-Four people, four subteams. Each folder has its own README with that
-team's semester roadmap, folder layout, and first task.
+Six people across four subteams. Each folder has its own README with
+that team's semester roadmap, folder layout, and first task. See
+[.github/CODEOWNERS](.github/CODEOWNERS) for who's on each one.
 
 - [data-team/](data-team/) — dataset acquisition, labeling, splits, augmentation
 - [detection-team/](detection-team/) — model training and the core detector
@@ -58,6 +59,10 @@ folder rather than the shared one — see that team's README.
 
 If you add a new shared dependency, run `pip freeze > requirements.txt`
 so everyone installs the exact same setup.
+
+If you're writing tests or running lint locally, also install the dev
+tools: `pip install -r requirements-dev.txt`. This isn't required just
+to run inference or training.
 
 ## Semester timeline
 
@@ -110,6 +115,11 @@ By the end of the semester, the team should ideally have:
 ## Meeting schedule
 
 Weekly, Sundays 6–7 PM (subject to change).
+
+**Open question:** now that the team is six people, worth deciding
+whether to keep a single one-hour Sunday sync for everyone, or split
+into a shorter full-team check-in plus separate subteam meetings.
+Not decided yet — raise it at the next sync.
 
 ## Reference
 

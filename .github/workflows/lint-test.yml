@@ -1,0 +1,34 @@
+name: Lint & Test
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  lint-test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python 3.10
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.10"
+
+      - name: Install dependencies
+        run: |
+          pip install -r requirements.txt
+          pip install -r requirements-dev.txt
+
+      - name: Lint with ruff
+        run: ruff check .
+
+      - name: Run tests
+        run: |
+          if find testing-deployment-team/tests -name 'test_*.py' -o -name '*_test.py' | grep -q .; then
+            pytest testing-deployment-team/tests/
+          else
+            echo "No tests in testing-deployment-team/tests/ yet, skipping."
+          fi

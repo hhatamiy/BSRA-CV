@@ -1,0 +1,11 @@
+# Code owners for each subteam's folder.
+# TODO: replace these placeholders with real GitHub usernames once
+# everyone's handle is collected, then remove this comment block.
+#
+# See https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/about-code-owners
+
+/data-team/               @data-team-member-1 @data-team-member-2
+/detection-team/          @detection-team-member-1 @detection-team-member-2
+/integration-team/        @integration-team-member-1
+/testing-deployment-team/ @testing-deployment-team-member-1
+/shared/                  @data-team-member-1 @detection-team-member-1 @integration-team-member-1

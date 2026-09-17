@@ -2,6 +2,11 @@
 
 Boiler Soccer Robots Association — Computer Vision team
 
+## Leadership
+
+- **Computer Vision Lead:** Hossein Hatami Yazd ([hhatamiy@purdue.edu](mailto:hhatamiy@purdue.edu))
+- **Programming Director:** Adhitya Vasudevan ([adhiv2007@gmail.com](mailto:adhiv2007@gmail.com), [vasude29@purdue.edu](mailto:vasude29@purdue.edu))
+
 ## What we're building
 
 Vision code for the SUSTAINA-OP2 humanoid platform
@@ -56,10 +61,45 @@ so everyone installs the exact same setup.
 
 ## Semester timeline
 
-- **Sept** — fundamentals & environment setup across all subteams
-- **Oct** — first ball-detection model
-- **Nov** — calibration + geometry + expanded detection classes
-- **Dec** — robustness testing, benchmarking, ROS 2 packaging, final demo
+By the end of Fall 2026 the CV team should be able to take RoboCup-style
+camera footage, reliably detect important soccer-field objects, begin
+converting those detections into robot-relative information, and have a
+reproducible training/inference pipeline ready to integrate into the
+full robot software stack.
+
+- **Sept — Fundamentals & setup.** Every member can run the dev
+  environment: OpenCV/PyTorch/Ultralytics installed, TORSO-21 explored,
+  a pretrained detector running.
+- **Oct — First RoboCup detection system.** A reproducible model that
+  detects the soccer ball in unseen RoboCup-style footage.
+- **Nov — Perception beyond bounding boxes.** Detection expands to
+  robots/goalposts/field lines/landmarks; a prototype pipeline converts
+  a ball detection into an approximate robot-relative position.
+- **Dec — Documentation & integration.** Robustness testing, inference
+  benchmarking, ONNX/TensorRT exploration, ROS 2 packaging, and enough
+  documentation that a new member could reproduce the whole system.
+
+Each subteam README has the full week-by-week breakdown for its slice
+of this timeline: [data-team](data-team/README.md#semester-roadmap),
+[detection-team](detection-team/README.md#semester-roadmap),
+[integration-team](integration-team/README.md#semester-roadmap),
+[testing-deployment-team](testing-deployment-team/README.md#semester-roadmap).
+
+### Success criteria
+
+By the end of the semester, the team should ideally have:
+
+- A reproducible CV development environment
+- A shared RoboCup dataset workflow
+- A trained RoboCup object-detection model
+- Reliable ball detection
+- Initial goalpost/robot/field perception
+- Basic camera calibration
+- Basic ground-plane projection
+- Quantitative model evaluation
+- Initial ROS 2 integration
+- Clear documentation allowing a new member to reproduce the system
+- A final perception demonstration
 
 ## Team norms
 

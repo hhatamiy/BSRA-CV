@@ -6,14 +6,63 @@ this feeds into detection-team.
 
 ## Semester roadmap
 
-- **Sept** — download and explore the [TORSO-21](https://github.com/bit-bots/TORSO-21-dataset)
-  dataset; document its label format in this README.
-- **Oct** — build train/val/test split scripts; implement augmentation
-  (lighting, blur, crop/scale, etc.).
-- **Nov–Dec** — extend the dataset with goalpost, robot, field-line, and
-  landmark classes (see `shared/classes.py` for the canonical names);
-  curate harder validation sets (varied lighting, occlusion, varied
-  backgrounds) for testing-deployment-team to use in robustness testing.
+### September — Fundamentals & setup
+
+- **Week 1** — Environment setup: Python/Git installed, repo cloned, root
+  `requirements.txt` installed. Agree on where the team will store raw
+  datasets (a drive folder — see Team norms in the root README).
+- **Week 2** — Learn the domain: what TORSO-21 and other RoboCup datasets
+  contain, how RoboCup imagery differs from general-purpose datasets
+  (field colors, lighting, camera angles), and how bounding-box labels
+  are represented.
+- **Week 3** — Download and explore the
+  [TORSO-21](https://github.com/bit-bots/TORSO-21-dataset) dataset in
+  depth: catalog its classes and annotation format, and note what's
+  missing for the classes we ultimately need (`shared/classes.py`:
+  ball, robot, goalpost, field_line, landmark).
+- **Week 4** — Document the dataset schema in the "Dataset schema"
+  section below. *End-of-September milestone (team-wide): everyone can
+  load/manipulate images with OpenCV and run an existing detector.*
+
+### October — First RoboCup detection system
+
+- **Week 5** — Build the train/val/test split script (`scripts/split.py`)
+  against the ball subset of the dataset; agree on a fixed random seed
+  so splits are reproducible.
+- **Week 6** — Implement data augmentation (`scripts/augment.py`):
+  lighting changes, blur, crop/scale.
+- **Week 7** — Work with detection-team and testing-deployment-team on
+  error analysis from the first trained model; expand or re-augment the
+  ball dataset to cover what it's getting wrong.
+- **Week 8** — Finalize dataset documentation and confirm the split
+  pipeline is reproducible end to end. *End-of-October milestone
+  (team-wide): a reproducible ball detector on unseen footage.*
+
+### November — Perception beyond bounding boxes
+
+- **Week 9** — Begin extending the dataset with robot, goalpost,
+  field-line, and landmark labels.
+- **Week 10** — Continue expanding multi-class labels; hand off updated
+  splits to detection-team as they become ready.
+- **Week 11** — Start curating harder validation sets — varied lighting,
+  partial occlusion, varied backgrounds — for testing-deployment-team's
+  Dec robustness testing.
+- **Week 12** — Finalize the expanded multi-class dataset. *End-of-
+  November milestone (team-wide): a prototype pipeline detects the ball
+  and converts it to an approximate robot-relative position.*
+
+### December — Documentation & integration
+
+- **Week 13** — Support detection-team and testing-deployment-team with
+  additional hard-case data (specific lighting/angle/occlusion examples
+  they need for robustness testing).
+- **Week 14** — Final dataset documentation pass.
+- **Week 15** — Write up the full dataset workflow (download → convert →
+  split → augment) in this README so a new member could reproduce it
+  from scratch.
+- **Week 16** — Support final perception demo prep as needed.
+  *End-of-semester milestone (team-wide): a working, documented RoboCup
+  perception prototype.*
 
 ## Folder layout
 

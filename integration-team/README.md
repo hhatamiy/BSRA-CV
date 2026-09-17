@@ -7,14 +7,68 @@ See [ARCHITECTURE.md](../ARCHITECTURE.md) for the full pipeline.
 
 ## Semester roadmap
 
-- **Sept** — ROS 2 environment setup; review image/message concepts
-  (topics, message types, nodes).
-- **Nov** — camera intrinsic calibration and lens distortion correction;
-  define coordinate systems and ground-plane projection; define the
-  perception message schema; write the first ROS 2 nodes for camera
-  input and detections.
-- **Dec** — package the trained detector as a clean ROS 2 node/module
-  alongside the projection code.
+### September — Fundamentals & setup
+
+- **Week 1** — Install ROS 2 and get a workspace building. Also install
+  the root [requirements.txt](../requirements.txt) so you can read
+  detection-team's output types.
+- **Week 2** — Review ROS 2 image/message concepts: topics, message
+  types, nodes, publishers/subscribers.
+- **Week 3** — Camera calibration basics: what intrinsics/extrinsics and
+  lens distortion actually are, at a conceptual level, before writing
+  any calibration code.
+- **Week 4** — Get a minimal ROS 2 publisher/subscriber pair running
+  locally end to end. *End-of-September milestone (team-wide): everyone
+  can load/manipulate images with OpenCV and run an existing detector.*
+
+### October — Prep for calibration & geometry
+
+Detection is the main focus this month elsewhere in the team, so use
+October to get ready for November's calibration/geometry push rather
+than sitting idle:
+
+- **Week 5** — Read up on coordinate systems and perspective geometry
+  (image plane vs. world/ground plane) — this is the math `geometry/`
+  will implement in November.
+- **Week 6** — Study OpenCV's camera calibration API
+  (`cv2.calibrateCamera`, checkerboard detection) and sketch
+  `calibration/calibrate.py`'s structure.
+- **Week 7** — Look at `shared/types.py`'s `Detection` and
+  `PerceptionObject` and sketch what the perception message schema
+  (`messages/`) should look like.
+- **Week 8** — Print/prepare a checkerboard calibration target so
+  you're ready to capture calibration images in week 9. *End-of-October
+  milestone (team-wide): a reproducible ball detector on unseen
+  footage.*
+
+### November — Perception beyond bounding boxes
+
+- **Week 9** — Calibrate a test camera: capture checkerboard images,
+  run `calibration/calibrate.py`, and undistort frames with OpenCV.
+- **Week 10** — Implement ground-plane projection (`geometry/projection.py`):
+  determine the center/base point of a detection's bounding box and
+  project it onto the ground plane using the calibration from week 9.
+- **Week 11** — Define the perception message schema
+  (`messages/perception_message.py`) and start the first ROS 2 nodes
+  for camera input (`ros2_nodes/camera_node.py`) and detections.
+- **Week 12** — Wire it together into a prototype: detection-team's
+  ball detector → projection → perception message. *End-of-November
+  milestone (team-wide): a prototype pipeline detects the ball and
+  converts it to an approximate robot-relative position.*
+
+### December — Documentation & integration
+
+- **Week 13** — Harden the calibration/projection math based on
+  testing-deployment-team's accuracy validation.
+- **Week 14** — Package the trained detector as a clean ROS 2
+  node/module (`ros2_nodes/perception_node.py`), combining detection,
+  projection, and message publishing.
+- **Week 15** — Document the calibration procedure, coordinate
+  conventions, and message schema in this README so a new member could
+  reproduce the setup.
+- **Week 16** — Support final perception demo prep. *End-of-semester
+  milestone (team-wide): a working, documented RoboCup perception
+  prototype.*
 
 ## Folder layout
 

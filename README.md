@@ -2,6 +2,9 @@
 
 Boiler Soccer Robots Association — Computer Vision team
 
+**New to the team? Start with [ONBOARDING.md](ONBOARDING.md)** — it
+tells you what to read, in what order, and how to get set up.
+
 ## Leadership
 
 - **Computer Vision Lead:** Hossein Hatami Yazd ([hhatamiy@purdue.edu](mailto:hhatamiy@purdue.edu))
@@ -50,7 +53,16 @@ source venv/bin/activate   # on Windows: venv\Scripts\activate
 
 # install shared dependencies
 pip install -r requirements.txt
+
+# run the quickstart to confirm your environment works
+python scripts/quickstart.py
 ```
+
+`scripts/quickstart.py` runs a sample image through as much of the real
+pipeline as currently exists — see its docstring for exactly what that
+covers today (honestly, not much yet — see the "Pipeline status" table
+in [ARCHITECTURE.md](ARCHITECTURE.md#pipeline-status)) and what it
+doesn't. The first run downloads ~6MB of pretrained YOLO weights.
 
 The root `requirements.txt` (ultralytics, opencv-python, torch, numpy,
 pyyaml) covers everyone. If your subteam needs something extra (ROS 2

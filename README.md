@@ -4,11 +4,34 @@ Boiler Soccer Robots Association — Computer Vision team
 
 ## What we're building
 
-Vision code for the SUSTAINA-OP2 humanoid platform. The goal is real-time object detection so the robot can identify the ball, field lines, and other robots during play. We're starting from a pretrained YOLO model and fine-tuning it on the specific objects our robot needs to see, rather than building detection from scratch.
+Vision code for the SUSTAINA-OP2 humanoid platform
+([SUSTAINA-OP2](https://github.com/SUSTAINA-OP2)). The semester goal is
+RoboCup-style object detection — ball, robots, goalposts, field
+lines/landmarks — with a reproducible training pipeline, feeding into
+robot-relative position estimates that the rest of the robot stack can
+use. We're starting from a pretrained YOLO model and fine-tuning it,
+rather than building detection from scratch.
+
+See [ARCHITECTURE.md](ARCHITECTURE.md) for how the pipeline fits
+together and where each subteam's code plugs in.
+
+## Subteams
+
+Four people, four subteams. Each folder has its own README with that
+team's semester roadmap, folder layout, and first task.
+
+- [data-team/](data-team/) — dataset acquisition, labeling, splits, augmentation
+- [detection-team/](detection-team/) — model training and the core detector
+- [integration-team/](integration-team/) — calibration, geometry, ROS 2 packaging
+- [testing-deployment-team/](testing-deployment-team/) — evaluation, robustness, benchmarking, final packaging
+
+Code shared across all four lives in [shared/](shared/) (class name
+constants, config loading, common types).
 
 ## Getting set up
 
-You'll need Python 3.10 or newer. Everyone should work inside a virtual environment so our dependencies stay consistent across machines.
+You'll need Python 3.10 or newer. Everyone should work inside a virtual
+environment so dependencies stay consistent across machines.
 
 ```bash
 # clone the repo
@@ -19,24 +42,24 @@ cd BSRA-CV
 python3 -m venv venv
 source venv/bin/activate   # on Windows: venv\Scripts\activate
 
-# install dependencies
+# install shared dependencies
 pip install -r requirements.txt
 ```
 
-Core packages: `ultralytics`, `opencv-python`, `torch`, `numpy`. If you add a new dependency, run `pip freeze > requirements.txt` afterward so everyone else can install the exact same setup.
+The root `requirements.txt` (ultralytics, opencv-python, torch, numpy,
+pyyaml) covers everyone. If your subteam needs something extra (ROS 2
+packages, ONNX/TensorRT), add a `requirements.txt` inside that subteam's
+folder rather than the shared one — see that team's README.
 
-## Project structure
+If you add a new shared dependency, run `pip freeze > requirements.txt`
+so everyone installs the exact same setup.
 
-```
-BSRA-CV/
-├── data/           # training images, labeled datasets (gitignored, don't commit raw data)
-├── models/         # saved model weights and checkpoints (gitignored)
-├── notebooks/      # exploratory work, experiments
-├── src/            # actual detection pipeline code
-├── docs/           # notes, meeting summaries, references
-├── requirements.txt
-└── README.md
-```
+## Semester timeline
+
+- **Sept** — fundamentals & environment setup across all subteams
+- **Oct** — first ball-detection model
+- **Nov** — calibration + geometry + expanded detection classes
+- **Dec** — robustness testing, benchmarking, ROS 2 packaging, final demo
 
 ## Team norms
 

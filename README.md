@@ -124,6 +124,20 @@ By the end of the semester, the team should ideally have:
 * Keep large files (datasets, model weights) out of git. Use the `.gitignore` for that, and share large files through a drive folder instead.
 * Post questions and blockers in the group chat between meetings rather than sitting stuck.
 
+### Branching
+
+Name feature branches `<subteam>/<short-task-name>` — lowercase,
+hyphens instead of spaces, no ticket numbers needed for a club project:
+
+* `data-team/torso21-download`
+* `detection-team/baseline-yolo-train`
+* `integration-team/camera-calibration`
+* `testing-deployment-team/eval-harness`
+
+`main` is protected: a pull request needs at least one approving review
+and a passing CI check (`.github/workflows/lint-test.yml`) before it can
+merge — budget time for that rather than expecting an instant merge.
+
 ## Meeting schedule
 
 Weekly, Sundays 6–7 PM (subject to change).

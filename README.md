@@ -7,7 +7,7 @@ tells you what to read, in what order, and how to get set up.
 
 ## Leadership
 
-- **Computer Vision Lead:** Hossein Hatami Yazd ([hhatamiy@purdue.edu](mailto:hhatamiy@purdue.edu))
+- **Computer Vision Lead:** Hossein Hatami Yazd ([hhatamiy@gmail.com](mailto:hhatamiy@gmail.com), [hhatamiy@purdue.edu](mailto:hhatamiy@purdue.edu))
 - **Programming Director:** Adhitya Vasudevan ([adhiv2007@gmail.com](mailto:adhiv2007@gmail.com), [vasude29@purdue.edu](mailto:vasude29@purdue.edu))
 
 ## What we're building

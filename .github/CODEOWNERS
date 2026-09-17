@@ -1,11 +1,19 @@
 # Code owners for each subteam's folder.
-# TODO: replace these placeholders with real GitHub usernames once
-# everyone's handle is collected, then remove this comment block.
+# TODO: replace the @*-github-username placeholders with real GitHub
+# usernames once each person's handle is collected, then remove this
+# comment block.
 #
 # See https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/about-code-owners
+#
+# Current roster (see the root README's Subteams section, or each
+# subteam's own README, for the human-readable version):
+#   data-team:               Gabriela, Josephine
+#   detection-team:          Suhaas, Aditya Mitra
+#   integration-team:        Phil
+#   testing-deployment-team: Hossein Hatami Yazd (@hhatamiy)
 
-/data-team/               @data-team-member-1 @data-team-member-2
-/detection-team/          @detection-team-member-1 @detection-team-member-2
-/integration-team/        @integration-team-member-1
-/testing-deployment-team/ @testing-deployment-team-member-1
-/shared/                  @data-team-member-1 @detection-team-member-1 @integration-team-member-1
+/data-team/               @gabriela-github-username @josephine-github-username
+/detection-team/          @suhaas-github-username @aditya-mitra-github-username
+/integration-team/        @phil-github-username
+/testing-deployment-team/ @hhatamiy
+/shared/                  @gabriela-github-username @suhaas-github-username @phil-github-username

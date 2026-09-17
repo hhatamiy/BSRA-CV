@@ -1,5 +1,7 @@
 # integration-team
 
+**Members:** Phil
+
 Owns calibration, geometry, and ROS 2 packaging: turning detection-team's
 image-space `Detection`s into robot-relative `PerceptionObject`s (see
 `shared/types.py`) and publishing them for the rest of the robot stack.

@@ -140,6 +140,76 @@ flowchart LR
 See each subteam's own README for its semester roadmap and current
 starting task.
 
+## Dependencies & timeline risk
+
+This maps the hard handoffs between subteams: points where one team's
+"Semester roadmap" calls for work that depends on another team's
+deliverable, rather than something the team can do on its own. Pulled
+directly from each subteam's roadmap as of Sept 2026 — if a roadmap
+changes, update this table in the same PR, the same way the
+[Pipeline status](#pipeline-status) table above is kept current.
+
+### Cross-team handoffs
+
+| # | Producer → Consumer | What moves | Producer week | Consumer week | Same week? | If it slips |
+|---|---|---|---|---|---|---|
+| 1 | data-team → detection-team | Ball train/val/test split (`scripts/split.py`) | Wk 4 | Wk 4 | **Yes — no buffer** | detection-team sets up its training config against a small placeholder split (a handful of hand-picked images) instead of waiting, then re-points it at the real split once it lands. |
+| 2 | detection-team → testing-deployment-team | First trained ball model | Wk 5 | Wk 5 | **Yes — no buffer** | testing-deployment-team finishes and dry-runs the eval harness against the stand-in pretrained YOLO model already used by `scripts/quickstart.py`, so the harness itself is proven before the real checkpoint exists. |
+| 3 | detection-team + testing-deployment-team → data-team | Failure cases from testing the first model on unseen footage | Wk 6 | Wk 6 | Yes — lower risk | data-team keeps general re-augmentation moving on already-known weak spots while waiting on the specific list. |
+| 4 | data-team → detection-team | Robot + goalpost labels | Wk 7 | Wk 7 | **Yes — no buffer** | detection-team starts the multi-class training setup against a small hand-labeled sample of robots/goalposts, then swaps in the real expanded labels. |
+| 5 | data-team → detection-team | Field-line + landmark labels | Wk 8 | Wk 8 | **Yes — no buffer** | Same pattern as row 4, for the field-line/landmark classes. |
+| 6 | detection-team → integration-team | Detection output format | Wk 9 | Wk 9 | Yes — lower risk | integration-team can already draft the message schema from the existing `Detection`/`PerceptionObject` dataclasses in `shared/types.py` without waiting on this. |
+| 7 | integration-team → testing-deployment-team | Ground-plane projection, then stabilized calibration/geometry | Wk 8–9 | Wk 8–9 | **Yes — no buffer, two weeks running** | testing-deployment-team validates its accuracy-comparison method against known reference math (a stub projection) so it's ready to point at the real implementation the moment it lands. |
+| 8 | testing-deployment-team → detection-team | Reliability findings (lighting, blur, angle, occlusion) | Wk 10 | Wk 10 | Yes — lower risk | detection-team keeps general robustness/tuning work going rather than waiting on the specific findings. |
+| 9 | detection-team → testing-deployment-team | ONNX-exportable trained weights | Wk 11 | Wk 11 | Yes — lower risk | testing-deployment-team starts the ONNX export tooling against the existing quickstart YOLO weights so the export path is proven before the final weights land. |
+| 10 | data-team → testing-deployment-team | Curated harder validation sets (lighting, occlusion, background) | Wk 9 | Wk 10 | No — 1 week buffer | — |
+| 11 | testing-deployment-team → integration-team | Calibration/projection accuracy validation results | Wk 8–9 | Wk 10 | No — 1–2 week buffer | — |
+
+Rows marked **"Yes — no buffer"** are ones where the consuming team's
+roadmap task can't really start without that specific week's
+deliverable — that's where the placeholder/stub mitigation matters
+most. Rows marked "lower risk" are also same-week, but the consuming
+team has a reasonable independent starting point already (an existing
+type definition, general-purpose work, a stand-in artifact already in
+the repo), so a one-week slip there is easier to absorb.
+
+### November's dependency chain
+
+Weeks 7–9 are where these same-week handoffs cluster: data-team's two
+label handoffs into detection-team, and integration-team's two-week
+handoff into testing-deployment-team, land back to back with no slack
+between them.
+
+```mermaid
+flowchart LR
+    Data["data-team"]
+    Det["detection-team"]
+    Int["integration-team"]
+    Test["testing-deployment-team"]
+
+    Data -->|"Wk 7: robot/goalpost labels\nWk 8: field-line/landmark labels"| Det
+    Det -->|"Wk 9: detection output format"| Int
+    Int -->|"Wk 8: ground-plane projection\nWk 9: stabilized geometry"| Test
+```
+
+### A note worth a team conversation
+
+Per [.github/CODEOWNERS](.github/CODEOWNERS), integration-team and
+testing-deployment-team are each currently staffed by one person,
+while data-team and detection-team have two each. Of those two
+one-person teams, integration-team is the one whose November output
+another team's roadmap is directly waiting on, in back-to-back weeks
+(row 7 above) with no buffer either week. data-team carries a similar
+two-week concentration of dependents (rows 4–5) but has twice the
+staffing to cover it.
+
+Being on the critical path for two straight weeks with only one
+person covering it seems worth a team conversation about temporary
+support for integration-team in November. This section is meant to be
+where that reasoning lives if the team wants to have that
+conversation — it isn't a recommendation of who that support should
+be, or a decision that's already been made.
+
 ## Glossary
 
 Unfamiliar term (TORSO-21, mAP, ROS 2 node, ONNX, ...)? See

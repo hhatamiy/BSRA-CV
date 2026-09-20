@@ -7,7 +7,7 @@ tells you what to read, in what order, and how to get set up.
 
 ## Leadership
 
-- **Computer Vision Lead:** Hossein Hatami Yazd ([hhatamiy@purdue.edu](mailto:hhatamiy@purdue.edu))
+- **Computer Vision Lead:** Hossein Hatami Yazd ([hhatamiy@gmail.com](mailto:hhatamiy@gmail.com), [hhatamiy@purdue.edu](mailto:hhatamiy@purdue.edu))
 - **Programming Director:** Adhitya Vasudevan ([adhiv2007@gmail.com](mailto:adhiv2007@gmail.com), [vasude29@purdue.edu](mailto:vasude29@purdue.edu))
 
 ## What we're building
@@ -29,10 +29,10 @@ Six people across four subteams. Each folder has its own README with
 that team's semester roadmap, folder layout, and first task. See
 [.github/CODEOWNERS](.github/CODEOWNERS) for who's on each one.
 
-- [data-team/](data-team/) — dataset acquisition, labeling, splits, augmentation
-- [detection-team/](detection-team/) — model training and the core detector
-- [integration-team/](integration-team/) — calibration, geometry, ROS 2 packaging
-- [testing-deployment-team/](testing-deployment-team/) — evaluation, robustness, benchmarking, final packaging
+- [data-team/](data-team/) — dataset acquisition, labeling, splits, augmentation (Gabriela, Josephine)
+- [detection-team/](detection-team/) — model training and the core detector (Suhaas, Aditya Mitra)
+- [integration-team/](integration-team/) — calibration, geometry, ROS 2 packaging (Phil)
+- [testing-deployment-team/](testing-deployment-team/) — evaluation, robustness, benchmarking, final packaging (Hossein)
 
 Code shared across all four lives in [shared/](shared/) (class name
 constants, config loading, common types).
@@ -121,8 +121,23 @@ By the end of the semester, the team should ideally have:
 ## Team norms
 
 * Work off feature branches, open a pull request before merging into `main`.
-* Keep large files (datasets, model weights) out of git. Use the `.gitignore` for that, and share large files through a drive folder instead.
+* Keep large files (datasets, model weights) out of git. Use the `.gitignore` for that, and share large files through the [team drive folder](https://drive.google.com/drive/folders/1qa2ktrauYvNnrdFLqBTY9tBebvrS4sXG) instead.
 * Post questions and blockers in the group chat between meetings rather than sitting stuck.
+* Track physical equipment needs and purchase status in [EQUIPMENT.md](EQUIPMENT.md).
+
+### Branching
+
+Name feature branches `<subteam>/<short-task-name>` — lowercase,
+hyphens instead of spaces, no ticket numbers needed for a club project:
+
+* `data-team/torso21-download`
+* `detection-team/baseline-yolo-train`
+* `integration-team/camera-calibration`
+* `testing-deployment-team/eval-harness`
+
+`main` is protected: a pull request needs at least one approving review
+and a passing CI check (`.github/workflows/lint-test.yml`) before it can
+merge — budget time for that rather than expecting an instant merge.
 
 ## Meeting schedule
 

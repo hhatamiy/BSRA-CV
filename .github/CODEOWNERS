@@ -10,10 +10,10 @@
 #   data-team:               Gabriela, Josephine
 #   detection-team:          Suhaas, Aditya Mitra
 #   integration-team:        Phil
-#   testing-deployment-team: Hossein Hatami Yazd (@hhatamiy)
+#   testing-deployment-team: Hossein Hatami Yazd (@hhatamiy), Henry (@ThunderDinInteractive)
 
 /data-team/               @gabriela-github-username @josephine-github-username
 /detection-team/          @suhaas-github-username @aditya-mitra-github-username
 /integration-team/        @phil-github-username
-/testing-deployment-team/ @hhatamiy
+/testing-deployment-team/ @hhatamiy @ThunderDinInteractive
 /shared/                  @gabriela-github-username @suhaas-github-username @phil-github-username

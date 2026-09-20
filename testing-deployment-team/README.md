@@ -1,11 +1,29 @@
 # testing-deployment-team
 
-**Members:** Hossein Hatami Yazd
+**Members:** Hossein Hatami Yazd, Henry (@ThunderDinInteractive)
 
 Owns evaluation, robustness testing, benchmarking, optimization research,
 and pulling the semester's work into one documented, reproducible result.
 See [ARCHITECTURE.md](../ARCHITECTURE.md) for how this touches both
 detection-team and integration-team's output.
+
+## Work in progress
+
+Two of us can end up touching the same file without realizing it, so:
+check this table before starting work in `tests/`, `benchmarks/`, or
+`deployment/`, and update your row when your status changes (open a PR
+comment or ping the group chat too if it's urgent - this table is a
+quick check, not a substitute for talking to each other). Delete a row
+once it's merged to `main`.
+
+| File(s) | Status | Who | Branch | Notes |
+|---|---|---|---|---|
+| `tests/eval_harness.py` | 🚧 In progress | Hossein | `testing-deployment-team/eval-harness` | First working draft: wraps `ultralytics.YOLO.val()` for precision/recall/mAP, plus a first-pass failure-case logger. Runs end to end today, but only against a placeholder synthetic dataset + stock pretrained weights - see the file's own docstring for the full real-vs-placeholder breakdown. Not yet opened as a PR. |
+
+<!-- Add a row here before you start editing a file also listed above,
+or before starting work that touches the same section of a shared doc
+like ARCHITECTURE.md, so we don't duplicate effort or step on each
+other's changes. -->
 
 ## Semester roadmap
 

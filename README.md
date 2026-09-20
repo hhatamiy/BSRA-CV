@@ -25,14 +25,14 @@ together and where each subteam's code plugs in.
 
 ## Subteams
 
-Six people across four subteams. Each folder has its own README with
+Seven people across four subteams. Each folder has its own README with
 that team's semester roadmap, folder layout, and first task. See
 [.github/CODEOWNERS](.github/CODEOWNERS) for who's on each one.
 
 - [data-team/](data-team/) — dataset acquisition, labeling, splits, augmentation (Gabriela, Josephine)
 - [detection-team/](detection-team/) — model training and the core detector (Suhaas, Aditya Mitra)
 - [integration-team/](integration-team/) — calibration, geometry, ROS 2 packaging (Phil)
-- [testing-deployment-team/](testing-deployment-team/) — evaluation, robustness, benchmarking, final packaging (Hossein)
+- [testing-deployment-team/](testing-deployment-team/) — evaluation, robustness, benchmarking, final packaging (Hossein, Henry)
 
 Code shared across all four lives in [shared/](shared/) (class name
 constants, config loading, common types).
@@ -134,6 +134,25 @@ hyphens instead of spaces, no ticket numbers needed for a club project:
 * `detection-team/baseline-yolo-train`
 * `integration-team/camera-calibration`
 * `testing-deployment-team/eval-harness`
+
+**These are examples of the naming pattern, not fixed branch names to
+reuse for every task.** If two people on the same subteam are working
+on different things at the same time, give each task its own name so
+you're not both pushing to one branch — e.g. `testing-deployment-team/
+eval-harness` and `testing-deployment-team/dependency-map`, not both
+called `eval-harness`. If it's genuinely unclear whether your task and
+a teammate's overlap, add your name: `testing-deployment-team/hossein-
+eval-harness`.
+
+Before starting work, pull the latest of whatever branch you're
+building on (`git fetch && git pull`) - don't assume it's still where
+you left it, especially on a subteam-shared branch. And don't let
+uncommitted work pile up locally for long: commit and push in small,
+frequent increments so a teammate pushing to the same branch name
+doesn't diverge far from what you have before you can merge it in.
+Each subteam README's "Work in progress" section (where present) is
+the place to flag what you're currently touching, so a teammate can
+check before starting something that overlaps.
 
 `main` is protected: a pull request needs at least one approving review
 and a passing CI check (`.github/workflows/lint-test.yml`) before it can

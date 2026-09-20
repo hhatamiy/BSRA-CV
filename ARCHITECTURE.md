@@ -16,7 +16,7 @@ What's actually implemented today, not the roadmap:
 | Calibration (`integration-team/calibration/`) | **Not started** | `calibrate.py` is a skeleton; no camera has been calibrated. |
 | Ground-plane projection (`integration-team/geometry/`) | **Not started** | `projection.py` is a skeleton. |
 | ROS 2 packaging (`integration-team/ros2_nodes/`, `messages/`) | **Not started** | Node files and the message-conversion stub exist; no ROS 2 message schema has been defined yet. |
-| Evaluation & benchmarking (`testing-deployment-team/`) | **Not started** | `tests/eval_harness.py`, `benchmarks/inference_speed.py`, `deployment/export_onnx.py` are skeletons. |
+| Evaluation & benchmarking (`testing-deployment-team/`) | **Partial** | `tests/eval_harness.py` is implemented: given a manifest + detector it computes precision/recall at IoU 0.5 and ms/frame, and gates on `benchmarks/baseline.json`. Runs today against a bundled dummy detector and tiny synthetic fixture dataset — swap in a real model and dataset once they exist. `benchmarks/inference_speed.py` and `deployment/export_onnx.py` are still skeletons. |
 
 > **Keep this current:** if you implement a stage, update its row in
 > this table in the same PR. A stale status table is worse than none.

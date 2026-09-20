@@ -56,6 +56,21 @@ These are the types every subteam should import rather than
 redefining, from [`shared/types.py`](shared/types.py). This file is
 real, implemented code (not a stub).
 
+**Camera frame** — the input to detection, before any of the types
+below apply
+
+| Property | Value |
+|---|---|
+| Type | `numpy.ndarray` |
+| Shape | `(height, width, 3)` |
+| Channel order | BGR (OpenCV's default — what `cv2.imread` and `cv2.VideoCapture.read()` both return) |
+| dtype | `uint8`, 0–255 per channel |
+
+Anything that produces frames (camera node, a test fixture, a sample
+image loaded from disk) should hand off exactly this. Anything that
+consumes frames (`Detector.predict`, the benchmark harness) should
+assume nothing else.
+
 **`BoundingBox`**
 
 | Field | Type | Description |
@@ -72,6 +87,12 @@ real, implemented code (not a stub).
 | `class_name` | `str` | One of `shared/classes.py`'s `CLASSES`: `ball`, `robot`, `goalpost`, `field_line`, `landmark` |
 | `confidence` | `float` | Model confidence score, 0–1 |
 | `bbox` | `BoundingBox` | Image-space bounding box |
+| `timestamp` | `float \| None` | Unix time the source frame was captured. Optional — `None` when the caller doesn't have a real capture time (e.g. a static test image). |
+
+`Detection` deliberately has no field-position field: it's the raw,
+image-space output of the model, before calibration or ground-plane
+projection exist. A robot-relative position only exists once a
+`Detection` has been projected into a `PerceptionObject`, below.
 
 **`Position2D`** — robot-relative position on the ground plane, in
 meters
@@ -89,6 +110,7 @@ world coordinates
 | `class_name` | `str` | Carried over from the source `Detection` |
 | `confidence` | `float` | Carried over from the source `Detection` |
 | `position` | `Position2D` | Projected ground-plane position |
+| `timestamp` | `float \| None` | Carried over from the source `Detection` |
 
 **ROS 2 perception message:** **not yet defined.**
 [`integration-team/messages/perception_message.py`](integration-team/messages/perception_message.py)

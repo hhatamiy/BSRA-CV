@@ -5,6 +5,19 @@ Boiler Soccer Robots Association — Computer Vision team
 **New to the team? Start with [ONBOARDING.md](ONBOARDING.md)** — it
 tells you what to read, in what order, and how to get set up.
 
+## Quickstart
+
+```bash
+git clone https://github.com/hhatamiy/BSRA-CV.git && cd BSRA-CV
+./scripts/setup.sh && source venv/bin/activate   # one-command env setup
+pytest testing-deployment-team/tests/            # unit tests
+ruff check .                                     # lint
+python testing-deployment-team/tests/eval_harness.py   # benchmark harness
+```
+
+See [Getting set up](#getting-set-up) below for the step-by-step version
+and what each command does.
+
 ## Leadership
 
 - **Computer Vision Lead:** Hossein Hatami Yazd ([hhatamiy@gmail.com](mailto:hhatamiy@gmail.com), [hhatamiy@purdue.edu](mailto:hhatamiy@purdue.edu))
@@ -39,8 +52,23 @@ constants, config loading, common types).
 
 ## Getting set up
 
-You'll need Python 3.10 or newer. Everyone should work inside a virtual
-environment so dependencies stay consistent across machines.
+You'll need Python 3.10 (pinned in [`.python-version`](.python-version);
+tested on Apple Silicon Macs and Linux). Everyone should work inside a
+virtual environment so dependencies stay consistent across machines —
+`requirements.txt`/`requirements-dev.txt` pin exact versions for that
+reason, so `pip install` gives everyone the same environment.
+
+One command:
+
+```bash
+git clone https://github.com/hhatamiy/BSRA-CV.git
+cd BSRA-CV
+./scripts/setup.sh          # creates venv/, installs deps, installs pre-commit hooks
+source venv/bin/activate    # do this in every new shell
+python scripts/quickstart.py
+```
+
+Or by hand, if you want to see each step:
 
 ```bash
 # clone the repo
@@ -48,15 +76,39 @@ git clone https://github.com/hhatamiy/BSRA-CV.git
 cd BSRA-CV
 
 # create and activate a virtual environment
-python3 -m venv venv
+python3.10 -m venv venv
 source venv/bin/activate   # on Windows: venv\Scripts\activate
 
-# install shared dependencies
+# install shared + dev dependencies
 pip install -r requirements.txt
+pip install -r requirements-dev.txt
+pre-commit install
 
 # run the quickstart to confirm your environment works
 python scripts/quickstart.py
 ```
+
+### Running tests and lint
+
+```bash
+pytest testing-deployment-team/tests/     # unit tests
+ruff check .                              # lint
+ruff format .                             # auto-format
+```
+
+### Running the benchmark harness
+
+```bash
+python testing-deployment-team/tests/eval_harness.py
+```
+
+Runs the current detector (the bundled dummy detector by default) over
+the sample dataset in `testing-deployment-team/tests/fixtures/`, reports
+precision/recall at IoU 0.5 and ms/frame, and fails (nonzero exit) if
+recall has dropped too far versus
+[`testing-deployment-team/benchmarks/baseline.json`](testing-deployment-team/benchmarks/baseline.json).
+See [`testing-deployment-team/README.md`](testing-deployment-team/README.md#benchmark-harness)
+for how to point it at a real model and dataset.
 
 `scripts/quickstart.py` runs a sample image through as much of the real
 pipeline as currently exists — see its docstring for exactly what that
@@ -69,12 +121,9 @@ pyyaml) covers everyone. If your subteam needs something extra (ROS 2
 packages, ONNX/TensorRT), add a `requirements.txt` inside that subteam's
 folder rather than the shared one — see that team's README.
 
-If you add a new shared dependency, run `pip freeze > requirements.txt`
-so everyone installs the exact same setup.
-
-If you're writing tests or running lint locally, also install the dev
-tools: `pip install -r requirements-dev.txt`. This isn't required just
-to run inference or training.
+If you add a new shared dependency, pin it to an exact version in
+`requirements.txt` (e.g. `some-package==1.2.3`) rather than leaving it
+unpinned, so everyone installs the exact same setup.
 
 ## Semester timeline
 

@@ -16,7 +16,7 @@ What's actually implemented today, not the roadmap:
 | Calibration (`integration-team/calibration/`) | **Not started** | `calibrate.py` is a skeleton; no camera has been calibrated. |
 | Ground-plane projection (`integration-team/geometry/`) | **Not started** | `projection.py` is a skeleton. |
 | ROS 2 packaging (`integration-team/ros2_nodes/`, `messages/`) | **Not started** | Node files and the message-conversion stub exist; no ROS 2 message schema has been defined yet. |
-| Evaluation & benchmarking (`testing-deployment-team/`) | **Not started** | `tests/eval_harness.py`, `benchmarks/inference_speed.py`, `deployment/export_onnx.py` are skeletons. |
+| Evaluation & benchmarking (`testing-deployment-team/`) | **In progress** (branch `testing-deployment-team/eval-harness`, not yet merged to `main` — see [testing-deployment-team/README.md](testing-deployment-team/README.md#work-in-progress) before starting related work) | `tests/eval_harness.py` runs end to end — it wraps `ultralytics.YOLO.val()` to compute precision/recall/mAP and has a first-pass failure-case logger — but only against a placeholder synthetic dataset and a stock pretrained model, since data-team has no real split and detection-team has no trained weights yet; swap those in once they exist. `benchmarks/inference_speed.py` and `deployment/export_onnx.py` are still skeletons. |
 
 > **Keep this current:** if you implement a stage, update its row in
 > this table in the same PR. A stale status table is worse than none.

@@ -150,6 +150,8 @@ of this timeline: [data-team](data-team/README.md#semester-roadmap),
 [detection-team](detection-team/README.md#semester-roadmap),
 [integration-team](integration-team/README.md#semester-roadmap),
 [testing-deployment-team](testing-deployment-team/README.md#semester-roadmap).
+See [docs/milestones.md](docs/milestones.md) for the measurable,
+owner-and-date version of these milestones.
 
 ### Success criteria
 
@@ -168,6 +170,10 @@ By the end of the semester, the team should ideally have:
 - A final perception demonstration
 
 ## Team norms
+
+See [CONTRIBUTING.md](CONTRIBUTING.md) for the full pull request
+workflow (pre-commit hooks, what to run before opening a PR, review
+requirements). Short version:
 
 * Work off feature branches, open a pull request before merging into `main`.
 * Keep large files (datasets, model weights) out of git. Use the `.gitignore` for that, and share large files through the [team drive folder](https://drive.google.com/drive/folders/1qa2ktrauYvNnrdFLqBTY9tBebvrS4sXG) instead.

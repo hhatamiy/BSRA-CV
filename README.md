@@ -29,10 +29,10 @@ Six people across four subteams. Each folder has its own README with
 that team's semester roadmap, folder layout, and first task. See
 [.github/CODEOWNERS](.github/CODEOWNERS) for who's on each one.
 
-- [data-team/](data-team/) — dataset acquisition, labeling, splits, augmentation
-- [detection-team/](detection-team/) — model training and the core detector
-- [integration-team/](integration-team/) — calibration, geometry, ROS 2 packaging
-- [testing-deployment-team/](testing-deployment-team/) — evaluation, robustness, benchmarking, final packaging
+- [data-team/](data-team/) — dataset acquisition, labeling, splits, augmentation (Gabriela, Josephine)
+- [detection-team/](detection-team/) — model training and the core detector (Suhaas, Aditya Mitra)
+- [integration-team/](integration-team/) — calibration, geometry, ROS 2 packaging (Phil)
+- [testing-deployment-team/](testing-deployment-team/) — evaluation, robustness, benchmarking, final packaging (Hossein)
 
 Code shared across all four lives in [shared/](shared/) (class name
 constants, config loading, common types).

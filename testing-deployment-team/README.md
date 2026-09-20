@@ -1,5 +1,7 @@
 # testing-deployment-team
 
+**Members:** Hossein Hatami Yazd
+
 Owns evaluation, robustness testing, benchmarking, optimization research,
 and pulling the semester's work into one documented, reproducible result.
 See [ARCHITECTURE.md](../ARCHITECTURE.md) for how this touches both

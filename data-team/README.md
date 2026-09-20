@@ -1,5 +1,7 @@
 # data-team
 
+**Members:** Gabriela, Josephine
+
 Owns dataset acquisition, labeling, splits, and augmentation for the
 perception pipeline. See [ARCHITECTURE.md](../ARCHITECTURE.md) for how
 this feeds into detection-team.

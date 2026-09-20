@@ -1,5 +1,7 @@
 # detection-team
 
+**Members:** Suhaas, Aditya Mitra
+
 Owns model training and the core object detector. Produces the
 `Detection` objects (see `shared/types.py`) that integration-team
 projects into robot-relative positions — see
